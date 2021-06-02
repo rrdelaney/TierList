@@ -1,14 +1,15 @@
+import {
+  AnimateLayoutFeature,
+  AnimateSharedLayout,
+  m as motion,
+  MotionConfig,
+} from 'framer-motion';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
-import { TierList, TierListData } from '../types';
 import data from '../data.json';
-import {
-  m as motion,
-  AnimateSharedLayout,
-  MotionConfig,
-  AnimateLayoutFeature,
-} from 'framer-motion';
+import { TierList, TierListData } from '../types';
 
 interface TierListViewProps {
   previous: string | null;
@@ -47,6 +48,10 @@ function TierListView({
 }: TierListViewProps) {
   return (
     <MotionConfig features={[AnimateLayoutFeature]}>
+      <Head>
+        <title>Official Smash Ultimate {version} Tier List</title>
+      </Head>
+
       <div className="min-h-screen bg-gray-800 flex flex-col space-y-5 py-10">
         <div className="flex justify-between items-center px-5">
           {previous != null ? (
